@@ -1,0 +1,49 @@
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  height: 55px;
+}
+
+li {
+  float: left;
+  margin: 0;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 0px 15px;
+  text-decoration: none;
+  margin: 0;
+}
+
+.search_label {
+  color: white;
+  text-decoration: none;
+  float: left;
+  line-height: 32px;
+  margin-right: 10px;
+}
+
+.search_list {
+  float: right;
+  padding: 10px 16px;
+  text-align: center;
+  display: block;
+  font-weight: 900;
+  font-size: 18px;
+}
+
+.logo {
+  font-weight: 900;
+  font-size: 30px;
+  margin: 0;
+}
+
+.search_button:hover {
+  background-color: green;
+}

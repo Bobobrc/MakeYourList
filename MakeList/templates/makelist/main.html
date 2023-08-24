@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}" />
+    <title>MakeYourList</title>
+  </head>
+  <body>
+    <ul>
+      <li class="logo"><a href="{% url 'MainPage' %}">MakeYourList</a></li>
+      <li class="search_list">
+        <form method="POST" class="search_form">
+          {% csrf_token %}
+          <b><label class="search_label">Search list:</label></b>
+          <input type="text" name="list_name" placeholder="List Name" />
+          <button class="btn btn-primary search_button" type="submit" name="Submit" value="search_list">
+            Search list!
+          </button>
+        </form>
+      </li>
+    </ul>
+    {% block content %} {% endblock content %}
+    <div class="message">
+      <p>Thanks for using MakeYourList!</p>
+    </div>
+  </body>
+</html>

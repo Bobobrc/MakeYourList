@@ -1,1 +1,22 @@
-<p>Hello!</p>
+{% extends 'makelist/main.html' %}{% load static %} {% block content %}
+<p>Create List</p>
+<form method="POST">
+  {% csrf_token %}
+  <b><label>List name:</label></b>
+  <br />
+  <input type="text" name="list_name" placeholder="List Name" /><br />
+  <b><label>List password:</label></b
+  ><br />
+  <input type="text" name="list_password" placeholder="List Password" /><br />
+  <button class="btn btn-primary" type="submit" name="Submit" value="create_list">Create list!</button>
+</form>
+<p>Search List</p>
+<form method="POST">
+  {% csrf_token %}
+  <b><label>List name:</label></b>
+  <br />
+  <input type="text" name="list_name" placeholder="List Name" />
+  <br />
+  <button class="btn btn-primary" type="submit" name="Submit" value="search_list">Search list!</button>
+</form>
+{% endblock content %}
