@@ -1,6 +1,6 @@
 {% extends 'makelist/main.html' %}{% load static %} {% block content %}
 <p>Create List</p>
-<form method="POST">
+<form method="post">
   {% csrf_token %}
   <b><label>List name:</label></b>
   <br />
@@ -11,7 +11,7 @@
   <button class="btn btn-primary" type="submit" name="Submit" value="create_list">Create list!</button>
 </form>
 <p>Search List</p>
-<form method="POST">
+<form method="post">
   {% csrf_token %}
   <b><label>List name:</label></b>
   <br />
