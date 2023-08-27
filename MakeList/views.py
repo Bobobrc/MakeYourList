@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import Http404
-from .models import List
+from .models import List, Task
 from .forms import ListForm
+from django.contrib import messages
 
 # Create your views here.
 def MainPage(request):
@@ -24,4 +25,17 @@ def MainPage(request):
   return render(request, 'makelist/firstpage.html')
 
 def ListPage(request, list_name):
-  return render(request, 'makelist/list.html')
+  the_list = List.objects.get(list_name=list_name)
+  error_message = None
+  if request.method == "POST":
+    task_name = request.POST.get("task_name")
+    list_password = request.POST.get("list_password")
+    important = request.POST.get('important_task', False)
+    if list_password == the_list.list_password:
+      new_task = Task(list=the_list, task_name=task_name, important=important)
+      new_task.save()
+      return redirect('ListPage', list_name=list_name)
+    else:
+      error_message = "Wrong password. Please try again."
+  tasks = Task.objects.filter(list=the_list)
+  return render(request, 'makelist/list.html', {'list_name': list_name, 'tasks':tasks, 'error_message': error_message})

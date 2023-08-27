@@ -1,3 +1,17 @@
 {% extends 'makelist/main.html' %}{% load static %} {% block content %}
-<p>Hello</p>
-{% endblock content %}
+<p>{{ list_name }}</p>
+<form method="POST">
+  {% csrf_token %}
+  <b><label>Create task:</label></b>
+  <input type="text" name="task_name" placeholder="Task Name" />
+  <b><label>List password:</label></b>
+  <input type="text" name="list_password" placeholder="List Password" />
+  <input type="checkbox" name="important_task" value="True" />
+  <b><label>Important</label></b>
+  <button class="btn btn-primary" type="submit" name="Submit" value="create_task">Create Task!</button>
+</form>
+{% if error_message %}
+<div class="error-message">{{ error_message }}</div>
+{% endif %} {% for task in tasks %}
+<b><p>{{task}}</p></b>
+{% endfor %} {% endblock content %}
